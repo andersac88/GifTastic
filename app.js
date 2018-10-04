@@ -18,9 +18,6 @@ $.ajax({
         img.attr("src", response.data[i].images.downsized.url)
         $("body").append(img)}
         console.log(i)
-        return
-    })
-   
     $(".fun").on("click", function() {  
     if (i === 5) {
     for (i = 5; i < 15; i++) {
@@ -28,6 +25,7 @@ $.ajax({
         img.attr("src", response.data[i].images.downsized.url)
         $("body").append(img)}
     }
+    })
 })
 })
 
