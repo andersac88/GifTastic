@@ -1,36 +1,47 @@
+var topics = ["Bart Simpson", "Homer Simpson", "Ned Flanders", "Marge Simspon", "Maggie Simpson", "Lionel Hutz", "Ralph Wiggum", "Principal Skinner", "Mayor Quimby", "Troy McClure"];
 var i = 0;
-var images = []
-var button = []
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=cats&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=15";
 
+function displayGIF() {
+    var gifName = $(this).attr("data-value");
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=15";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        console.log(i);
+        if (i === 0) {
+            $("img").remove();
+            for (i = 0; i < 5; i++){
+                var img = $("<img>");
+                img.attr("src", response.data[i].images.downsized.url);
+                $(".images").append(img);}
+                console.log(i);
+            } else if (i === 5) {
+                $("img").remove();
+                for (i = 0; i < 15; i++) {
+                    var img = $("<img>");
+                    img.attr("src", response.data[i].images.downsized.url);
+                     $(".images").append(img);}
+                     i = 0;
+                    }
+                     
+      });
+}
 
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-    console.log(response)
-  console.log(response.data[1].url);
-  console.log(i)
-
-  $(".fun").on("click", function() {
-    for (i = 0; i < 5; i++) {
-        var img = $("<img>")
-        img.attr("src", response.data[i].images.downsized.url)
-        $("body").append(img)}
-        console.log(i)
-    $(".fun").on("click", function() {  
-    if (i === 5) {
-    for (i = 5; i < 15; i++) {
-        var img = $("<img>")
-        img.attr("src", response.data[i].images.downsized.url)
-        $("body").append(img)}
+function searchButtons() {
+    // Deleting the topics prior to adding new movies
+    $(".header").empty();
+    // Looping through the array of topics
+    for (var i = 0; i < topics.length; i++) {
+      var a = $("<button>");
+      a.addClass("topic-btn btn btn-warning mx-1");
+      a.attr("data-value", topics[i]);
+      a.text(topics[i]);
+      $(".header").append(a);
     }
-    })
-})
-})
+  }
 
-
-
-
-
+  $(document).on("click", ".topic-btn", displayGIF);
+  searchButtons();
 
