@@ -2,4 +2,7 @@ img {
     width: 200px;
 }
 
+html, body {
+    background-image: url("images/SimsponsCloud.jpg");
+}
 

@@ -1,7 +1,9 @@
 var topics = ["Bart Simpson", "Homer Simpson", "Ned Flanders", "Marge Simspon", "Maggie Simpson", "Lionel Hutz", "Ralph Wiggum", "Principal Skinner", "Mayor Quimby", "Troy McClure"];
 var i = 0;
+var moving = false;
 
 function displayGIF() {
+  
     var gifName = $(this).attr("data-value");
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=15";
     $.ajax({
@@ -14,20 +16,43 @@ function displayGIF() {
             $("img").remove();
             for (i = 0; i < 5; i++){
                 var img = $("<img>");
-                img.attr("src", response.data[i].images.downsized.url);
+                img.attr("src", response.data[i].images.original_still.url);
+                img.attr("data-number", i)
+                img.addClass("m-3 gif")
                 $(".images").append(img);}
                 console.log(i);
-            } else if (i === 5) {
+            } else if (i === 5)  {
                 $("img").remove();
                 for (i = 0; i < 15; i++) {
                     var img = $("<img>");
-                    img.attr("src", response.data[i].images.downsized.url);
+                    img.attr("src", response.data[i].images.original_still.url);
+                    img.attr("data-number", i)
+                    img.addClass("m-3 gif")
                      $(".images").append(img);}
                      i = 0;
-                    }
-                     
+                    }    
+
+            $(".gif").on("click", function() {
+                console.log(this)
+                if (moving === false) {
+                var gifString = $(this).attr("data-number")
+                var gifNumber = parseInt(gifString);
+                console.log(gifNumber);
+                moving = true;          
+               $(this).attr("src", response.data[gifNumber].images.original.url)
+                } else if (moving === true) {
+                    var gifString = $(this).attr("data-number")
+                    var gifNumber = parseInt(gifString);
+                    console.log(gifNumber);               
+                   $(this).attr("src", response.data[gifNumber].images.original_still.url)
+                   moving = false;
+                }
+            });
       });
 }
+
+
+
 
 function searchButtons() {
     // Deleting the topics prior to adding new movies
@@ -42,6 +67,18 @@ function searchButtons() {
     }
   }
 
+  $("#add-char").on("click", function(event){
+    event.preventDefault();
+    var submitChar = $("#char-input").val().trim();
+    console.log(submitChar);
+    topics.push(submitChar);
+    console.log(topics);
+    searchButtons();
+    });
+
+
   $(document).on("click", ".topic-btn", displayGIF);
   searchButtons();
+  
+ 
 
