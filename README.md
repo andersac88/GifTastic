@@ -12,6 +12,10 @@ I button will populate above and if clicked, 10 stills will be displayed below. 
 
 Additionally, below each Gif is it's title, rating and the opportunity to downlaod the Gif. 
 
+To add a gif to favorites, double cick on it. 
+
+When the favorites are display, to remove, click on the image.
+
 This project provides a great introduction to apis and ties it in with jquery, html and css. 
 
 This project is currently maintained and updated by Andrew Andersen (andersac88@gmail.com) if you have any questions, feel free to contact me directly.
