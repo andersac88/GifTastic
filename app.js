@@ -1,9 +1,8 @@
 var topics = ["Bart Simpson", "Homer Simpson", "Ned Flanders", "Marge Simspon", "Maggie Simpson", "Lionel Hutz", "Ralph Wiggum", "Principal Skinner", "Mayor Quimby", "Troy McClure"];
 var more;
-var favorites = [];
+
 
 function displayGIF() {
-    console.log(this)
     var more = $(this).attr("data-number")
     var gifName = $(this).attr("data-value");
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
@@ -11,7 +10,6 @@ function displayGIF() {
         url: queryURL,
         method: "GET"
       }).then(function(response) {
-          console.log(response)
             $(".crate").remove();
             $("img").remove();
             $("p").remove()
@@ -44,7 +42,6 @@ function displayGIF() {
 }
 
 function moreGifs() {
-    console.log(this)
     var more = $(this).attr("data-number")
     var gifName = $(this).attr("data-value");
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
@@ -52,7 +49,6 @@ function moreGifs() {
         url: queryURL,
         method: "GET"
       }).then(function(response) {
-          console.log(response)
             $(".crate").remove();
             $("img").remove();
             $("p").remove()
@@ -114,9 +110,7 @@ function searchButtons() {
   $("#add-char").on("click", function(event){
     event.preventDefault();
     var submitChar = $("#char-input").val().trim();
-    console.log(submitChar);
     topics.push(submitChar);
-    console.log(topics);
     searchButtons();
     });
 
@@ -124,9 +118,4 @@ function searchButtons() {
   $(document).on("dblclick", ".topic-btn", moreGifs);
   searchButtons();
   
-//work in progress for adding favorites 
-//$(".gif").on("dblclick", function(event){
-  //  event.preventDefault();
-  //  var temp = $(this).attr("src")
-//})
 
