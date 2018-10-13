@@ -34,26 +34,12 @@ function displayGIF() {
                 rating.text("Rating " + response.data[i].rating)
                 $(box).append(rating)
                 var download = $("<a>")
-                download.attr("href", response.data[i].images.original.url)
-                download.attr("download", true);
-                download.addClass("text-center")
-                download.text("Click to Download")
+                download.attr("href", response.data[i].images.downsized.url)
+                download.attr("download", "Downloaded.gif");
+                download.html("<button type='button' class='btn btn-warning btn-block'>Download</button>")
                 $(box).append(download)
             } moveGif() 
                });
-}
-
-
-function moveGif() {
-    $(".gif").on("click", function() {
-        var state = $(this).attr("data-state");
-        if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-        } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");}
-});
 }
 
 function moreGifs() {
@@ -89,11 +75,23 @@ function moreGifs() {
                 $(box).append(rating)
                 var download = $("<a>")
                 download.attr("href", response.data[i].images.original.url)
-                download.attr("download", true);
+                download.attr("download");
                 download.text("Click to Download")
                 $(box).append(download)
             } moveGif() 
                });
+}
+
+function moveGif() {
+    $(".gif").on("click", function() {
+        var state = $(this).attr("data-state");
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");}
+});
 }
 
 
