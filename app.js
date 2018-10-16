@@ -10,7 +10,7 @@ function displayGIF() {
     console.log(this)
     var more = $(this).attr("data-number")
     var gifName = $(this).attr("data-value");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -19,6 +19,7 @@ function displayGIF() {
             $(".crate").remove();
             $("img").remove();
             $("p").remove()
+            
             for (var i = 0; i < 10; i++){  
                 var box = $("<div>");
                 box.addClass("crate m-3")
@@ -51,7 +52,7 @@ function moreGifs() {
     console.log(this)
     var more = $(this).attr("data-number")
     var gifName = $(this).attr("data-value");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=P0nquDLJ1q86xUkaky5VJsXRacogZQyw&limit=30";
     $.ajax({
         url: queryURL,
         method: "GET"
