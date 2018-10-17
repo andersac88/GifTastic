@@ -1,12 +1,10 @@
-img {
-    width: 200px;
-}
-
 .crate {
-    width: 225px;
+    margin-left: 5px;
+
 }
 
 html, body {
     background-image: url("images/SimsponsCloud.jpg");
 }
 
+    

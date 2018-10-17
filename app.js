@@ -22,14 +22,14 @@ function displayGIF() {
             
             for (var i = 0; i < 10; i++){  
                 var box = $("<div>");
-                box.addClass("crate m-3")
+                box.addClass("crate text-center")
                 $(".boxes").append(box);
                 var img = $("<img>");
-                img.attr("src", response.data[i].images.original_still.url);
-                img.attr("data-still", response.data[i].images.original_still.url);
-                img.attr("data-animate", response.data[i].images.original.url);
+                img.attr("src", response.data[i].images.fixed_height_still.url);
+                img.attr("data-still", response.data[i].images.fixed_height_still.url);
+                img.attr("data-animate", response.data[i].images.fixed_height.url);
                 img.attr("data-state", "still")
-                img.addClass("m-3 gif")
+                img.addClass("gif")
                 $(box).append(img);
                 var title = $("<p>")
                 title.addClass("align-items-end text-center text-capitalize text-truncate")
@@ -42,7 +42,7 @@ function displayGIF() {
                 var download = $("<a>")
                 download.attr("href", response.data[i].images.downsized.url)
                 download.attr("download", "Downloaded.gif");
-                download.html("<button type='button' class='btn btn-warning btn-block'>Download</button>")
+                download.html("<button type='button' class='mb-3 btn btn-warning btn-block'>Download</button>")
                 $(box).append(download)
             } moveGif() 
                });
@@ -63,14 +63,14 @@ function moreGifs() {
             $("p").remove()
             for (var i = 0; i < 20; i++){  
                 var box = $("<div>");
-                box.addClass("crate m-3")
+                box.addClass("crate text-center")
                 $(".boxes").append(box);
                 var img = $("<img>");
-                img.attr("src", response.data[i].images.original_still.url);
-                img.attr("data-still", response.data[i].images.original_still.url);
-                img.attr("data-animate", response.data[i].images.original.url);
+                img.attr("src", response.data[i].images.fixed_height_still.url);
+                img.attr("data-still", response.data[i].images.fixed_height_still.url);
+                img.attr("data-animate", response.data[i].images.fixed_height.url);
                 img.attr("data-state", "still")
-                img.addClass("m-3 gif")
+                img.addClass("gif")
                 $(box).append(img);
                 var title = $("<p>")
                 title.addClass("align-items-end text-center text-capitalize text-truncate")
@@ -83,7 +83,7 @@ function moreGifs() {
                 var download = $("<a>")
                 download.attr("href", response.data[i].images.downsized.url)
                 download.attr("download", "Downloaded.gif");
-                download.html("<button type='button' class='btn btn-warning btn-block'>Download</button>")
+                download.html("<button type='button' class='mb-3 btn btn-warning btn-block'>Download</button>")
                 $(box).append(download)
             } moveGif() 
                });
@@ -107,7 +107,7 @@ function searchButtons() {
     // Looping through the array of topics
     for (var j = 0; j < topics.length; j++) {
       var a = $("<button>");
-      a.addClass("topic-btn btn btn-warning mx-1");
+      a.addClass("topic-btn btn btn-warning mb-3 mx-1");
       a.attr("data-value", topics[j]);
       a.attr("data-number", 1)
       a.text(topics[j]);
