@@ -122,6 +122,7 @@ function searchButtons() {
     console.log(submitChar);
     topics.push(submitChar);
     console.log(topics);
+    $("#char-input").val("")
     searchButtons();
     });
 
