@@ -115,7 +115,6 @@ function searchButtons() {
     }
   }
 
-
   $("#add-char").on("click", function(event){
     event.preventDefault();
     var submitChar = $("#char-input").val().trim();

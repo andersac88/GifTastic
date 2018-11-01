@@ -21,3 +21,6 @@ This project provides a great introduction to apis and ties it in with jquery, h
 This project is currently maintained and updated by Andrew Andersen (andersac88@gmail.com) if you have any questions, feel free to contact me directly.
 
 I have found it difficult to make the download button actually download or to find a more effective way to increase the number of gifs.
+
+Link to Try Application:
+https://andersac88.github.io/GifTastic/
